@@ -20,13 +20,16 @@ class CryptocurrencyListingsBloc
           ),
         );
 
-        final CryptocurrencyListingsModel response = await api.getLatestListings();
-
+        final CryptocurrencyListingsModel response =
+            await api.getLatestListings();
+        final ids = response.data.map((e) => e.id).toList();
+        final dynamic info = await api.getCryptoCurrencyInfo(ids);
         emit(
           state.copyWith(
             data: response.data,
             status: response.status,
             requestStatus: CryptocurrencyListingsRequestStatus.requestSuccess,
+            info: info
           ),
         );
       } catch (e) {

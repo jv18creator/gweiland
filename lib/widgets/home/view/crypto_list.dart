@@ -16,7 +16,6 @@ class _CryptoListState extends State<CryptoList> {
     context
         .read<CryptocurrencyListingsBloc>()
         .add(CryptocurrencyListingsRequested());
-
     super.initState();
   }
 
@@ -61,6 +60,7 @@ class _CryptoListState extends State<CryptoList> {
                     itemCount: state.data.length,
                     itemBuilder: (context, index) {
                       final crypto = state.data[index];
+                      final logo = state.info?[crypto.id.toString()]?['logo'];
                       final volumStatusString =
                           (crypto.quote?.usd?.volumeChange24H ?? 0) > 0
                               ? '+${crypto.quote?.usd?.volumeChange24H}'
@@ -87,7 +87,6 @@ class _CryptoListState extends State<CryptoList> {
                             ),
                             tileColor: Colors.transparent,
                             onTap: () {
-                              print(crypto.id);
                             },
                             title: Row(
                               children: [
@@ -141,6 +140,7 @@ class _CryptoListState extends State<CryptoList> {
                                 ),
                               ],
                             ),
+                            leading: logo != null ? Image.network(logo) : null,
                             // leading: CircleAvatar(
                             //   backgroundImage:
                             //       AssetImage('assets/${crypto.avatar}'),
