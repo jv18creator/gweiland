@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:gweiland/widgets/home/bloc/cryptocurrency_listings_bloc.dart';
+import 'package:gweiland/models/cryptocurrency_listings_model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 class CryptocurrencyListingsRepository {
@@ -11,13 +11,8 @@ class CryptocurrencyListingsRepository {
   );
 
 
-  Future getLatestListings() async {
+  Future<CryptocurrencyListingsModel> getLatestListings() async {
     var response = await dio.get('/v1/cryptocurrency/listings/latest');
-    print('response ${response.data['data']}');
-    print('${CryptocurrencyListingsState.fromJson(response.data)}');
-    return CryptocurrencyListingsState(
-        data: response.data['data'],
-        status: response.data['status'],
-      );
+    return CryptocurrencyListingsModel.fromJson(response.data);
   }
 }

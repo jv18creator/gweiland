@@ -8,8 +8,8 @@ enum CryptocurrencyListingsRequestStatus {
 }
 
 class CryptocurrencyListingsState {
-  dynamic data;
-  dynamic status;
+  List<Datum>? data;
+  Status? status;
   final CryptocurrencyListingsRequestStatus requestStatus;
 
   CryptocurrencyListingsState({
@@ -19,21 +19,14 @@ class CryptocurrencyListingsState {
   });
 
   CryptocurrencyListingsState copyWith({
-    dynamic data,
-    dynamic status,
+    List<Datum>? data,
+    Status? status,
     CryptocurrencyListingsRequestStatus? requestStatus,
   }) {
-    print('the data are $data');
     return CryptocurrencyListingsState(
       data: data ?? this.data,
       status: status ?? this.status,
       requestStatus: requestStatus ?? this.requestStatus,
     );
   }
-
-  factory CryptocurrencyListingsState.fromJson(Map<String, dynamic> source) =>
-      CryptocurrencyListingsState(
-        data: source['data'],
-        status: source['status'],
-      );
 }

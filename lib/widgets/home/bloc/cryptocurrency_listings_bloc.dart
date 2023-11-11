@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:gweiland/models/cryptocurrency_listings_model.dart';
 import 'package:gweiland/repository/cryptocurrency_listings_repository.dart';
 
 part 'cryptocurrency_listings_event.dart';
@@ -19,7 +20,7 @@ class CryptocurrencyListingsBloc
           ),
         );
 
-        final response = await api.getLatestListings();
+        final CryptocurrencyListingsModel response = await api.getLatestListings();
 
         emit(
           state.copyWith(
@@ -29,6 +30,7 @@ class CryptocurrencyListingsBloc
           ),
         );
       } catch (e) {
+        print('DAMN $e');
         emit(
           state.copyWith(
             requestStatus: CryptocurrencyListingsRequestStatus.requestFailure,
