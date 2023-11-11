@@ -7,16 +7,27 @@ class CustomBottomNavbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 200,
       width: double.maxFinite,
+      margin: const EdgeInsets.only(bottom: 20),
       decoration: const BoxDecoration(
         color: Color(0xff0B0B0B),
-        borderRadius: BorderRadius.vertical(
-          top: Radius.circular(20.0),
+        borderRadius: BorderRadius.all(
+          Radius.circular(35.0),
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black,
+            blurRadius: 10.0, // soften the shadow
+            spreadRadius: 2.0, //extend the shadow
+            offset: Offset(
+              2.0, // Move to right 10  horizontally
+              2.0, // Move to bottom 10 Vertically
+            ),
+          )
+        ],
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 20.0),
+        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -28,9 +39,12 @@ class CustomBottomNavbar extends StatelessWidget {
                   width: 28,
                   height: 28,
                 ),
+                const SizedBox(
+                  height: ICON_LABEL_GAP,
+                ),
                 const Text(
                   'Shop',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 13),
                 ),
               ],
             ),
@@ -41,9 +55,12 @@ class CustomBottomNavbar extends StatelessWidget {
                   width: 28,
                   height: 28,
                 ),
+                const SizedBox(
+                  height: ICON_LABEL_GAP,
+                ),
                 const Text(
                   'Exchange',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 13),
                 ),
               ],
             ),
@@ -56,29 +73,35 @@ class CustomBottomNavbar extends StatelessWidget {
                 ),
               ],
             ),
-             Column(
+            Column(
               children: [
                 SvgPicture.asset(
                   'assets/icons/launch.svg',
                   width: 28,
                   height: 28,
                 ),
+                const SizedBox(
+                  height: 6,
+                ),
                 const Text(
                   'Launchpads',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 13),
                 ),
               ],
             ),
-             Column(
+            Column(
               children: [
                 SvgPicture.asset(
                   'assets/icons/wallet.svg',
                   width: 28,
                   height: 28,
                 ),
+                const SizedBox(
+                  height: ICON_LABEL_GAP,
+                ),
                 const Text(
                   'Wallet',
-                  style: TextStyle(color: Colors.white),
+                  style: TextStyle(color: Colors.white, fontSize: 13),
                 ),
               ],
             ),
@@ -88,3 +111,5 @@ class CustomBottomNavbar extends StatelessWidget {
     );
   }
 }
+
+const double ICON_LABEL_GAP = 6;
