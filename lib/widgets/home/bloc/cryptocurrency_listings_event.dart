@@ -5,3 +5,4 @@ sealed class CryptocurrencyListingsEvent {
 }
 
 final class CryptocurrencyListingsRequested extends CryptocurrencyListingsEvent {}
+final class CryptocurrencyInfoRequested extends CryptocurrencyListingsEvent {}

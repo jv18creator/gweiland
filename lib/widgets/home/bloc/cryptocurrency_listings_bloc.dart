@@ -30,7 +30,7 @@ class CryptocurrencyListingsBloc
           ),
         );
       } catch (e) {
-        print('DAMN $e');
+        print('Error in api $e');
         emit(
           state.copyWith(
             requestStatus: CryptocurrencyListingsRequestStatus.requestFailure,

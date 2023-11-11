@@ -8,12 +8,12 @@ enum CryptocurrencyListingsRequestStatus {
 }
 
 class CryptocurrencyListingsState {
-  List<Datum>? data;
+  List<Datum> data;
   Status? status;
   final CryptocurrencyListingsRequestStatus requestStatus;
 
   CryptocurrencyListingsState({
-    this.data,
+    this.data = const [],
     this.status,
     this.requestStatus = CryptocurrencyListingsRequestStatus.unknown,
   });

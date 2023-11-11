@@ -31,8 +31,8 @@ class Datum {
   String? slug;
   int? cmcRank;
   int? numMarketPairs;
-  int? circulatingSupply;
-  int? totalSupply;
+  dynamic circulatingSupply;
+  dynamic totalSupply;
   int? maxSupply;
   bool? infiniteSupply;
   String? lastUpdated;
@@ -106,22 +106,22 @@ class Datum {
 
   factory Datum.fromJson(Map<String, dynamic> json) {
     return Datum(
-      // id: json['id'],
+      id: json['id'],
       name: json['name'] as String?,
       symbol: json['symbol'] as String?,
       slug: json['slug'] as String?,
       cmcRank: json['cmcRank'] as int?,
-      numMarketPairs: json['numMarketPairs'] as int?,
-      circulatingSupply: json['circulatingSupply'] as int?,
-      totalSupply: json['totalSupply'] as int?,
-      maxSupply: json['maxSupply'] as int?,
-      infiniteSupply: json['infiniteSupply'] as bool?,
-      lastUpdated: json['lastUpdated'] as String?,
-      dateAdded: json['dateAdded'] as String?,
-      // tags: (json['tags'] as List<dynamic>).cast<String>(),
+      numMarketPairs: json['num_market_pairs'] as int?,
+      circulatingSupply: json['circulating_supply'],
+      totalSupply: json['total_supply'],
+      maxSupply: json['max_supply'] as int?,
+      infiniteSupply: json['infinite_supply'] as bool?,
+      lastUpdated: json['last_updated'] as String?,
+      dateAdded: json['date_added'] as String?,
+      tags: (json['tags'] as List<dynamic>).cast<String>(),
       platform: json['platform'],
-      selfReportedCirculatingSupply: json['selfReportedCirculatingSupply'],
-      selfReportedMarketCap: json['selfReportedMarketCap'],
+      selfReportedCirculatingSupply: json['self_reported_circulating_supply'],
+      selfReportedMarketCap: json['self_reported_market_cap'],
       quote: Quote.fromJson(json['quote']),
     );
   }
@@ -293,7 +293,7 @@ class Eth {
 
 class Usd {
   double? price;
-  int? volume24H;
+  double? volume24H;
   double? volumeChange24H;
   double? percentChange1H;
   double? percentChange24H;
@@ -318,7 +318,7 @@ class Usd {
 
   Usd copyWith({
     double? price,
-    int? volume24H,
+    double? volume24H,
     double? volumeChange24H,
     double? percentChange1H,
     double? percentChange24H,
@@ -345,8 +345,8 @@ class Usd {
   factory Usd.fromJson(Map<String, dynamic> json) {
     return Usd(
       price: json['price'] as double?,
-      volume24H: json['volume24H'] as int?,
-      volumeChange24H: json['volumeChange24H'] as double?,
+      volume24H: json['volume_24h'],
+      volumeChange24H: json['volume_change_24h'] as double?,
       percentChange1H: json['percentChange1H'] as double?,
       percentChange24H: json['percentChange24H'] as double?,
       percentChange7D: json['percentChange7D'] as double?,
